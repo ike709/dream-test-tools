@@ -17,5 +17,5 @@ jobs:
         path: main
     - name: Setup
       run: |
-        pwd
+        cd main/
         ls
