@@ -21,20 +21,21 @@ fi
 sudo $packMan -y update
 if [[ $packMan == "yum" ]];then
 	sudo $packMan -y groupinstall "Development Tools"
+	sudo $packMan -y install openssl-devel bzip2-devel libffi-devel xz-devel
+	sudo $packMan -y install wget
 else
 	sudo $packMan -y install gcc
-	sudo $packMan -y install glibc
+	sudo $packMan -y install glibc6
+	sudo $packMan -y install libstdc++6
 	sudo $packMan -y install make
+	sudo $packMan -y install openssl-dev libbz2-dev libffi-dev xz-utils
 fi
-sudo $packMan -y install openssl-devel bzip2-devel libffi-devel xz-devel
-sudo $packMan -y install wget
 
-sudo $packMan -y install libstdc++
 
 cd $BASE_DIR 
 wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
 tar xvf Python-3.8.12.tgz
-cd Python-3.8*
+cd Python-3.8
 ./configure --enable-optimizations
 sudo make altinstall
 sudo ln -s /usr/local/bin/python3.8 /bin/python3.8
