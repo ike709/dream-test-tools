@@ -14,18 +14,22 @@ do
 done
 
 sudo $packMan -y update 
-sudo $packMan -y install epel-release
 if [[ $packMan == "yum" ]];then
+	sudo $packMan -y install epel-release
 	sudo $packMan -y install https://repo.ius.io/ius-release-el7.rpm 
 fi
 sudo $packMan -y update
-
-sudo $packMan -y groupinstall "Development Tools"
+if [[ $packMan == "yum" ]];then
+	sudo $packMan -y groupinstall "Development Tools"
+else
+	sudo $packMan -y install gcc
+	sudo $packMan -y install glibc
+	sudo $packMan -y install make
+fi
 sudo $packMan -y install openssl-devel bzip2-devel libffi-devel xz-devel
 sudo $packMan -y install wget
 
-sudo $packMan -y install glibc.i686
-sudo $packMan -y install libstdc++.i686
+sudo $packMan -y install libstdc++
 
 cd $BASE_DIR 
 wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
@@ -37,11 +41,13 @@ sudo ln -s /usr/local/bin/python3.8 /bin/python3.8
 sudo python3.8 -m pip install --upgrade pip
 sudo python3.8 -m pip install GitPython
 
-sudo yum -y remove git
-sudo yum -y install git222
+sudo $packMan -y remove git
+sudo $packMan -y install git222
 
-sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
-sudo yum -y install dotnet-sdk-6.0
+if [[ $packMan == "yum" ]];then
+	sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
+fi
+sudo $packMan -y install dotnet-sdk-6.0
 
 cd $BASE_DIR
 mkdir dream-storage
