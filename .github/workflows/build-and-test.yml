@@ -19,6 +19,10 @@ jobs:
       uses: actions/checkout@v2
       with:
         path: main
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
     - name: Setup
       run: |
         cd main/box/vagrant/
@@ -37,7 +41,6 @@ jobs:
         cd main/scripts/
         python3.8 test_curation_report.py compile byond.default opendream.default
         python3.8 test_curation_report.py compile byond.default clopendream.default
-        python3.8 test_curation_report.py compile clopendream.default opendream.default
         cd ../
         pwd
         ls

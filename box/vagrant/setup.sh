@@ -36,7 +36,9 @@ wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
 tar xvf Python-3.8.12.tgz
 cd Python-3.8.12/
 if [[ $packMan == "yum" ]];then
+	cd Python-3.8.12/
 	./configure --enable-optimizations
+		
 fi
 sudo make altinstall
 sudo ln -s /usr/local/bin/python3.8 /bin/python3.8
@@ -47,9 +49,8 @@ if [[ $packMan == "yum" ]];then
 	sudo $packMan -y remove git
 	sudo $packMan -y install git222
 	sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
+	sudo $packMan -y install dotnet-sdk-6.0
 fi
-
-sudo $packMan -y install dotnet-sdk-6.0
 
 cd $BASE_DIR
 mkdir dream-storage
