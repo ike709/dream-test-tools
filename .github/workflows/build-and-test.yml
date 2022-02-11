@@ -24,3 +24,6 @@ jobs:
         python3.8 install.py byond default
         python3.8 install.py opendream default
         python3.8 install.py clopendream default
+    - name: Run All Curated Tests
+      run: |
+        python3.8 test_curation_all.py byond.default opendream.default clopendream.default
