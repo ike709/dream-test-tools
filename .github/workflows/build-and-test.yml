@@ -35,13 +35,8 @@ jobs:
       run: |
         cd main/scripts/
         python3.8 test_curation_report.py compile byond.default opendream.default
-    - name: Test dir
-      run: |
-        cd ~/dream-storage/tests/reports/
-        pwd
-        ls
     - name: Upload Report
       uses: actions/upload-artifact@v2
       with:
         name: byond-opendream-report
-        path: ~/dream-storage/tests/reports/byond-opendream-full.html
+        path: ~/dream-storage/tests/reports/byond.default-opendream.default-full.html
