@@ -41,7 +41,7 @@ jobs:
         pwd
         ls
     - name: Upload Report
-          uses: actions/upload-artifact@v2
-          with:
-            name: byond-opendream-report
-            path: ~/dream-storage/tests/reports/byond-opendream-full.html
+      uses: actions/upload-artifact@v2
+      with:
+        name: byond-opendream-report
+        path: ~/dream-storage/tests/reports/byond-opendream-full.html
