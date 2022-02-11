@@ -41,12 +41,12 @@ sudo ln -s /usr/local/bin/python3.8 /bin/python3.8
 sudo python3.8 -m pip install --upgrade pip
 sudo python3.8 -m pip install GitPython
 
-sudo $packMan -y remove git
-sudo $packMan -y install git222
-
 if [[ $packMan == "yum" ]];then
+	sudo $packMan -y remove git
+	sudo $packMan -y install git222
 	sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
 fi
+
 sudo $packMan -y install dotnet-sdk-6.0
 
 cd $BASE_DIR
