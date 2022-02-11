@@ -1,4 +1,15 @@
 
+declare -A osInfo;
+osInfo[/etc/centos-release]=yum
+osInfo[/etc/os-release]=apt
+
+for f in ${!osInfo[@]}
+do
+    if [[ -f $f ]];then
+        echo Package manager: ${osInfo[$f]}
+    fi
+done
+
 sudo yum -y update 
 sudo yum -y install epel-release
 sudo yum -y install https://repo.ius.io/ius-release-el7.rpm 
