@@ -35,7 +35,9 @@ cd $BASE_DIR
 wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
 tar xvf Python-3.8.12.tgz
 cd Python-3.8.12/
-./configure --enable-optimizations
+if [[ $packMan == "yum" ]];then
+	./configure --enable-optimizations
+fi
 sudo make altinstall
 sudo ln -s /usr/local/bin/python3.8 /bin/python3.8
 sudo python3.8 -m pip install --upgrade pip
