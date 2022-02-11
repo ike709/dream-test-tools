@@ -25,17 +25,16 @@ if [[ $packMan == "yum" ]];then
 	sudo $packMan -y install wget
 else
 	sudo $packMan -y install gcc
-	sudo $packMan -y install glibc6
+	sudo $packMan -y install libc6
 	sudo $packMan -y install libstdc++6
-	sudo $packMan -y install make
-	sudo $packMan -y install openssl-dev libbz2-dev libffi-dev xz-utils
+	sudo $packMan -y install build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 fi
 
 
 cd $BASE_DIR 
 wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
 tar xvf Python-3.8.12.tgz
-cd Python-3.8
+cd Python-3.8.12/
 ./configure --enable-optimizations
 sudo make altinstall
 sudo ln -s /usr/local/bin/python3.8 /bin/python3.8
