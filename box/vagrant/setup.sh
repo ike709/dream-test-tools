@@ -13,12 +13,14 @@ do
     fi
 done
 
-sudo $packMan -y update 
 if [[ $packMan == "yum" ]];then
+	sudo $packMan -y update 
 	sudo $packMan -y install epel-release
 	sudo $packMan -y install https://repo.ius.io/ius-release-el7.rpm 
 fi
+
 sudo $packMan -y update
+
 if [[ $packMan == "yum" ]];then
 	sudo $packMan -y groupinstall "Development Tools"
 	sudo $packMan -y install openssl-devel bzip2-devel libffi-devel xz-devel
@@ -27,16 +29,15 @@ else
 	sudo $packMan -y install gcc
 	sudo $packMan -y install libc6
 	sudo $packMan -y install libstdc++6
-	sudo $packMan -y install build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+	sudo $packMan -y install libssl-dev llvm libncurses5-dev libncursesw5-dev tk-dev python-openssl
 fi
 
 
 cd $BASE_DIR 
 wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
-tar xvf Python-3.8.12.tgz
+tar xf Python-3.8.12.tgz
 cd Python-3.8.12/
 if [[ $packMan == "yum" ]];then
-	cd Python-3.8.12/
 	./configure --enable-optimizations
 		
 fi
@@ -50,6 +51,8 @@ if [[ $packMan == "yum" ]];then
 	sudo $packMan -y install git222
 	sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
 	sudo $packMan -y install dotnet-sdk-6.0
+else
+	sudo $packMan -y install dotnet-runtime-6.0
 fi
 
 cd $BASE_DIR
