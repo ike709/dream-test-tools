@@ -26,5 +26,5 @@ jobs:
         python3.8 install.py clopendream default
     - name: Run All Curated Tests
       run: |
-        pwd
+        cd main/scripts/
         python3.8 test_curation_all.py byond.default opendream.default clopendream.default
