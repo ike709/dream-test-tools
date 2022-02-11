@@ -17,5 +17,5 @@ jobs:
         path: main
     - name: Setup
       run: |
-        cd main/box/vagrant
-        setup.sh
+        pwd
+        ls
