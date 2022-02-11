@@ -1,5 +1,5 @@
 
-name: Compile Test Codebases
+name: Build & Test
 
 on:
   push:
@@ -13,6 +13,9 @@ jobs:
     steps:
     - name: Checkout Main
       uses: actions/checkout@v2
+      with:
+        path: main
     - name: Setup
       run: |
-        box/vagrant/box/vagrant/setup.sh
+        cd main/box/vagrant/box/vagrant
+        setup.sh
