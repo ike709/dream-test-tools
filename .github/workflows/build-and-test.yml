@@ -20,3 +20,6 @@ jobs:
         cd main/box/vagrant/
         chmod +x setup.sh
         ./setup.sh
+        python3.8 install.py byond default
+        python3.8 install.py opendream default
+        python3.8 install.py clopendream default
