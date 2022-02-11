@@ -9,23 +9,23 @@ for f in ${!osInfo[@]}
 do
     if [[ -f $f ]];then
         echo Package manager: ${osInfo[$f]}
-		packMan =  osInfo[$f]
+		packMan=${osInfo[$f]}
     fi
 done
 
-sudo packMan -y update 
-sudo packMan -y install epel-release
-if [[ packMan == "yum" ]]
-sudo packMan -y install https://repo.ius.io/ius-release-el7.rpm 
+sudo $packMan -y update 
+sudo $packMan -y install epel-release
+if [[ $packMan == "yum" ]];then
+	sudo $packMan -y install https://repo.ius.io/ius-release-el7.rpm 
 fi
-sudo packMan -y update
+sudo $packMan -y update
 
-sudo packMan -y groupinstall "Development Tools"
-sudo packMan -y install openssl-devel bzip2-devel libffi-devel xz-devel
-sudo packMan -y install wget
+sudo $packMan -y groupinstall "Development Tools"
+sudo $packMan -y install openssl-devel bzip2-devel libffi-devel xz-devel
+sudo $packMan -y install wget
 
-sudo packMan -y install glibc.i686
-sudo packMan -y install libstdc++.i686
+sudo $packMan -y install glibc.i686
+sudo $packMan -y install libstdc++.i686
 
 cd $BASE_DIR 
 wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
